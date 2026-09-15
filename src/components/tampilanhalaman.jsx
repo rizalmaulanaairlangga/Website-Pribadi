@@ -19,6 +19,7 @@ const TampilanHalaman = ({ scrollToSection, homeRef, aboutMeRef, cardStackRef, s
   // Refs for specific elements that will be observed for visibility
   const motivationRef = useRef(null);
   const buttonMoreAllRefs = useRef(null);
+  const v2BannerRef = useRef(null);
 
   // useEffect to observe visibility of sections and trigger animations
   useEffect(() => {
@@ -27,6 +28,10 @@ const TampilanHalaman = ({ scrollToSection, homeRef, aboutMeRef, cardStackRef, s
 
   useEffect(() => {
     observeSections([buttonMoreAllRefs], [0.1]); // Threshold set to 0.1 for the "More All" button
+  }, [observeSections]);
+
+  useEffect(() => {
+    observeSections([v2BannerRef], [0.15]);
   }, [observeSections]);
 
   return (
@@ -44,6 +49,73 @@ const TampilanHalaman = ({ scrollToSection, homeRef, aboutMeRef, cardStackRef, s
             aboutMeRef={aboutMeRef}
             queriesRef={queriesRef}
           />
+        </div>
+
+        {/* New Website Announcement — di bawah Hero Section */}
+        <div
+          id="v2-announcement"
+          ref={v2BannerRef}
+          className={`xl:w-[78%] lg:w-[90%] w-[93%] mx-auto -mt-6 lg:-mt-20 mb-16 lg:mb-24 transition-all duration-700 ease-out ${
+            visibleSections["v2-announcement"] ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <div className="relative overflow-hidden rounded-[20px] md:rounded-[28px] border border-white/15 bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent backdrop-blur-xl p-[1px]">
+            <div className="rounded-[19px] md:rounded-[27px] bg-gradient-to-br from-zinc-900/80 via-zinc-900/70 to-black/80 backdrop-blur-xl">
+              {/* subtle glow */}
+              <div className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-white/10 blur-[50px]" />
+              <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-white/[0.06] blur-[40px]" />
+
+              <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 md:gap-8 px-5 py-6 sm:px-7 sm:py-7 md:px-8 md:py-8">
+                {/* Left: text */}
+                <div className="flex-1 min-w-0">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium tracking-wide text-white/90 backdrop-blur">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                    </span>
+                    Sedang dalam pengembangan
+                    <span className="hidden sm:inline-flex items-center gap-1.5 ml-1 pl-2.5 border-l border-white/15">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="opacity-80">
+                        <path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.2L12 16.4 5.8 20.9l2.4-7.2L2 9.2h7.6z" />
+                      </svg>
+                      V2 • Coming Soon
+                    </span>
+                  </div>
+
+                  <h3 className="mt-4 text-[22px] sm:text-2xl md:text-[28px] font-bold leading-tight text-white tracking-tight">
+                    Website Pribadi Baru
+                    <span className="font-normal text-white/60"> — lebih cepat & modern</span>
+                  </h3>
+                  <p className="mt-2.5 text-[14px] sm:text-[15px] leading-relaxed text-white/70 max-w-[60ch]">
+                    Terima kasih sudah mampir! Saya sedang membangun versi terbaru dari website ini dengan desain dan pengalaman yang lebih baik. Intip progresnya selagi masih dalam tahap pengembangan.
+                  </p>
+                  <p className="mt-2 hidden sm:block text-xs text-white/45">
+                    Kamu akan diarahkan ke <span className="text-white/70 font-mono">personal-website-v2-eight-gamma.vercel.app</span>
+                  </p>
+                </div>
+
+                {/* Right: CTA */}
+                <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-3 lg:min-w-[220px] shrink-0">
+                  <a
+                    href="https://personal-website-v2-eight-gamma.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-white px-6 py-3.5 md:px-7 text-[15px] font-semibold text-black shadow-[0_8px_24px_rgba(255,255,255,0.15)] hover:bg-zinc-100 hover:shadow-[0_12px_32px_rgba(255,255,255,0.22)] active:scale-[0.98] transition-all duration-300"
+                  >
+                    Kunjungi Website Baru
+                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-black text-white group-hover:translate-x-0.5 transition-transform duration-300">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </a>
+                  <span className="text-center sm:text-left lg:text-center xl:text-left text-xs text-white/40 px-1">
+                    Buka di tab baru ↗
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Motivation Section */}
