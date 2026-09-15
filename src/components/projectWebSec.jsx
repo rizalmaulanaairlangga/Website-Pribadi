@@ -119,7 +119,7 @@ function ProjectWebSection() {
             <div className="w-full">
               <h2 className="text-2xl font-bold mb-4">Web Mandiri Terbaik</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-14 mt-4 px-14 w-full">
-                {bestPersonalWebsite.map((project, index) => {
+                {bestPersonalWebsite.map((project) => {
               const visibleBestPersonalWeb = visibleSections[`web-${project.id}`];
               const classBestPersonalWeb = `group shadow-md hover:shadow-black overflow-hidden block cursor-pointer transition-all duration-300 rounded-3xl
                 ${visibleBestPersonalWeb ? "translate-y-0 opacity-100 ease-in-out" : "translate-y-10 opacity-0 ease-in"}`;
@@ -158,7 +158,7 @@ function ProjectWebSection() {
             <div className="w-full">
               <h2 className="text-2xl font-bold mt-8 mb-4">Semua Proyek Mandiri</h2>
               <div className="flex flex-wrap justify-center gap-6">
-                {restPersonalWebsite.map((project, i) => {
+                {restPersonalWebsite.map((project) => {
               const visibleRestPersonalWeb = visibleSections[`web-${project.id}`];
               const classRestPersonalWeb = `group shadow-md hover:shadow-black overflow-hidden block cursor-pointer transition-all duration-300 rounded-3xl w-[45%] md:w-[30%] lg:w-[22%]
                 ${visibleRestPersonalWeb ? "translate-y-0 opacity-100 ease-in-out" : "translate-y-10 opacity-0 ease-in"}`;
@@ -208,7 +208,7 @@ function ProjectWebSection() {
             <div className="w-full">
               <h2 className="text-2xl font-bold mb-4">Web Kolaborasi Terbaik</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-14 mt-4 px-14 w-full">
-                {collabProjects.map((project, index) => {
+                {bestCollabWebsite.map((project) => {
               const visibleBestCollabWeb = visibleSections[`collab-${project.id}`];
               const classBestCollabWeb = `group shadow-md hover:shadow-black overflow-hidden block cursor-pointer transition-all duration-300 rounded-3xl
                 ${visibleBestCollabWeb ? "translate-y-0 opacity-100 ease-in-out" : "translate-y-10 opacity-0 ease-in"}`;
@@ -247,8 +247,7 @@ function ProjectWebSection() {
             <div className="w-full">
               <h2 className="text-2xl font-bold mt-8 mb-4">Semua Proyek Kolaborasi</h2>
               <div className="flex flex-wrap justify-center gap-6">
-                {collabProjects.map((project, i) => {
-              const idx = projects.findIndex(p => p.id === project.id);
+                {restCollabWebsite.map((project) => {
               const visibleRestCollabWeb = visibleSections[`collab-${project.id}`];
               const classRestCollabWeb = `group shadow-md hover:shadow-black overflow-hidden block cursor-pointer transition-all duration-300 rounded-3xl w-[45%] md:w-[30%] lg:w-[22%]
                 ${visibleRestCollabWeb ? "translate-y-0 opacity-100 ease-in-out" : "translate-y-10 opacity-0 ease-in"}`;

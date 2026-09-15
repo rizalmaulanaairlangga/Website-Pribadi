@@ -49,6 +49,7 @@ const TypingEffect = () => {
       clearTimeout(typingTimeoutRef.current);
       clearTimeout(delayTimeoutRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]); // Efek dijalankan ulang setiap kali currentIndex berubah
 
   return (

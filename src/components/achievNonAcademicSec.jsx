@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { AnimationContext } from '../App';
 
 const AchievNonAcademic = () => {
@@ -110,7 +110,7 @@ const AchievNonAcademic = () => {
         <div className="w-full">
           <h2 className="text-2xl font-bold mb-4">Prestasi Non-Akademik Terbaik</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-14 px-14 w-full">
-            {best.map((ach, i) => {
+            {best.map((ach) => {
               const idx = achievements.findIndex(x => x.id === ach.id);
               return (
                 <a

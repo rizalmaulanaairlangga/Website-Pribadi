@@ -47,10 +47,9 @@ function App() {
       { threshold: thresholds }
     );
 
-    // Start observing the provided refs with thresholds
-    refs.forEach((ref, index) => {
+    // Start observing the provided refs
+    refs.forEach((ref) => {
       if (ref.current) {
-        const threshold = thresholds[index] !== undefined ? thresholds[index] : 0.0; // Default threshold is 0.0
         observer.observe(ref.current);
       }
     });

@@ -1,5 +1,5 @@
 // Import React dan hooks yang dibutuhkan
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { AnimationContext } from "../App";
 import AcademicAchiev from './achievAcademicSec.jsx'; // Komponen untuk prestasi akademik
 import AcademicNonAchiev from './achievNonAcademicSec.jsx'; // Komponen untuk prestasi non-akademik

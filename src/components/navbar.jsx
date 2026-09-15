@@ -6,11 +6,6 @@ const Navbar = ({ scrollToSection, homeRef, aboutMeRef, cardStackRef, skillRef, 
   const navigate = useNavigate(); // Hook for navigation
   const location = useLocation(); // Hook to access current location
 
-  // Function to handle scroll event and adjust navbar appearance
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 50); // Change state when scrolled more than 50px
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       // Atur threshold scroll sesuai kebutuhan
@@ -38,22 +33,30 @@ const Navbar = ({ scrollToSection, homeRef, aboutMeRef, cardStackRef, skillRef, 
   const [activeMenu, setActiveMenu] = useState(''); // State to track the active menu item
 
   useEffect(() => {
+    // Capture current elements to avoid stale ref warnings in cleanup
+    const homeEl = homeRef.current;
+    const aboutEl = aboutMeRef.current;
+    const stackEl = cardStackRef.current;
+    const skillEl = skillRef.current;
+    const queriesEl = queriesRef.current;
+    const contactEl = contactRef.current;
+
     // Intersection Observer to track which section is currently visible
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           // Set active menu based on the visible section
-          if (entry.target === homeRef.current) {
+          if (entry.target === homeEl) {
             setActiveMenu('Home');
-          } else if (entry.target === aboutMeRef.current) {
+          } else if (entry.target === aboutEl) {
             setActiveMenu('About Me');
-          } else if (entry.target === cardStackRef.current) {
+          } else if (entry.target === stackEl) {
             setActiveMenu('Stack');
-          } else if (entry.target === skillRef.current) {
+          } else if (entry.target === skillEl) {
             setActiveMenu('Skill');
-          } else if (entry.target === queriesRef.current) {
+          } else if (entry.target === queriesEl) {
             setActiveMenu('Queries');
-          } else if (entry.target === contactRef.current) {
+          } else if (entry.target === contactEl) {
             setActiveMenu('Contact');
           }
         }
@@ -70,21 +73,21 @@ const Navbar = ({ scrollToSection, homeRef, aboutMeRef, cardStackRef, skillRef, 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     // Observe each section using the refs passed in the props
-    if (homeRef.current) observer.observe(homeRef.current);
-    if (aboutMeRef.current) observer.observe(aboutMeRef.current);
-    if (cardStackRef.current) observer.observe(cardStackRef.current);
-    if (skillRef.current) observer.observe(skillRef.current);
-    if (queriesRef.current) observer.observe(queriesRef.current);
-    if (contactRef.current) observer.observe(contactRef.current);
+    if (homeEl) observer.observe(homeEl);
+    if (aboutEl) observer.observe(aboutEl);
+    if (stackEl) observer.observe(stackEl);
+    if (skillEl) observer.observe(skillEl);
+    if (queriesEl) observer.observe(queriesEl);
+    if (contactEl) observer.observe(contactEl);
 
     // Cleanup observer when the component unmounts
     return () => {
-      if (homeRef.current) observer.unobserve(homeRef.current);
-      if (aboutMeRef.current) observer.unobserve(aboutMeRef.current);
-      if (cardStackRef.current) observer.unobserve(cardStackRef.current);
-      if (skillRef.current) observer.unobserve(skillRef.current);
-      if (queriesRef.current) observer.unobserve(queriesRef.current);
-      if (contactRef.current) observer.unobserve(contactRef.current);
+      if (homeEl) observer.unobserve(homeEl);
+      if (aboutEl) observer.unobserve(aboutEl);
+      if (stackEl) observer.unobserve(stackEl);
+      if (skillEl) observer.unobserve(skillEl);
+      if (queriesEl) observer.unobserve(queriesEl);
+      if (contactEl) observer.unobserve(contactEl);
     };
   }, [homeRef, aboutMeRef, cardStackRef, skillRef, queriesRef, contactRef]);
 
